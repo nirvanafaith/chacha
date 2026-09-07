@@ -6,7 +6,7 @@ Windows 文件夹加密与还原工具，由独立的加密端和「铁道资源
 
 ## 下载
 
-从 [最新 Release](https://github.com/nirvanafaith/chacha/releases/latest) 下载便携包。此仓库为私有仓库，仅获授权的 GitHub 用户可以访问源码和下载 Release。
+从 [最新 Release](https://github.com/nirvanafaith/chacha/releases/latest) 下载便携包。此仓库为公开仓库，任何人都可以查看源码和下载 Release，无需登录 GitHub。
 
 | 文件 | 内容 |
 | --- | --- |
