@@ -1,0 +1,34 @@
+[build]
+target = "i686-pc-windows-gnu"
+
+# 32 位 GNU：链接系统 msvcrt.dll（XP 自带），PE 子系统 5.01 让 XP 加载器接受。
+# Vista+ 的 kernel32 入口点由 src/xpcompat.rs 以同名定义抢走，不进导入表。
+[target.i686-pc-windows-gnu]
+linker = "i686-w64-mingw32-gcc"
+rustflags = [
+    "-C", "debuginfo=0",
+    "-C", "link-arg=-s",
+    "-C", "link-arg=-static",
+    "-C", "link-arg=-mwindows",
+    "-C", "link-arg=-Wl,--subsystem,windows:5.01",
+    "-C", "link-arg=-Wl,--major-os-version,5",
+    "-C", "link-arg=-Wl,--minor-os-version,1",
+    "-C", "link-arg=-Wl,--major-subsystem-version,5",
+    "-C", "link-arg=-Wl,--minor-subsystem-version,1",
+    "-C", "link-arg=-Wl,--gc-sections",
+    "-C", "link-arg=-lcomctl32",
+    "-C", "link-arg=-lole32",
+    "-C", "link-arg=-lshell32",
+    "-C", "link-arg=-lcomdlg32",
+    "-C", "link-arg=-lgdi32",
+    "-C", "link-arg=-luser32",
+    "-C", "link-arg=-ladvapi32",
+]
+
+[target.i686-pc-windows-msvc]
+rustflags = [
+    "-C", "target-feature=+crt-static",
+    "-C", "link-arg=/SUBSYSTEM:WINDOWS,5.01",
+    "-C", "link-arg=/DYNAMICBASE",
+    "-C", "link-arg=/NXCOMPAT",
+]

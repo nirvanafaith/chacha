@@ -1,0 +1,9 @@
+$ErrorActionPreference = 'Stop'
+$Root = Split-Path -Parent $PSScriptRoot
+$env:CARGO_HOME = Join-Path $Root 'tools\cargo'
+$env:RUSTUP_HOME = Join-Path $Root 'tools\rustup'
+$gnu = Join-Path $env:RUSTUP_HOME 'toolchains\1.44.0-i686-pc-windows-gnu'
+$env:PATH = "$env:CARGO_HOME\bin;$gnu\bin;$gnu\lib\rustlib\i686-pc-windows-gnu\bin;$env:PATH"
+$env:RUSTUP_TOOLCHAIN = '1.44.0-i686-pc-windows-gnu'
+$env:RUSTUP_DIST_SERVER = 'https://static.rust-lang.org'
+$env:RUSTUP_IO_THREADS = '2'
